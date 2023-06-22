@@ -6,7 +6,11 @@ import ru.skypro.lessons.springboot.auctionsystem.entity.BidEntity;
 
 @Component
 public class BidMapper {
-    public Bidder toDto(BidEntity bid){
+    public Bidder toBidder(BidEntity bid){
+        if(bid == null){
+            return null;
+        }
+
         Bidder bidder = new Bidder();
         bidder.setBidderName(bid.getBidderName());
         bidder.setBidDate(bid.getBidDate());

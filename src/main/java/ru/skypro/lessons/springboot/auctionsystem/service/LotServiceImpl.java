@@ -44,7 +44,7 @@ public class LotServiceImpl implements LotService{
     @Override
     public Bidder getFirstBidder(Integer id) {
         return bidRepository.findFirstByLotIdIsOrderByBidDate(id)
-                .map(bidMapper::toDto)
+                .map(bidMapper::toBidder)
                 .orElseThrow(
                         () -> new IdNotFoundException("Ставка с lot_id="+id+" не найдена.")
                 );
