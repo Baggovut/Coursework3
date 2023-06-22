@@ -58,7 +58,7 @@ public class LotMapper {
         );
         //fullLot.setLastBid(null);
         fullLot.setLastBid(
-                lotEntity.getBids().get(lotEntity.getBids().size()-1)
+                lotEntity.getBids().size() > 0 ? lotEntity.getBids().get(lotEntity.getBids().size()-1) : null
         );
 
         return fullLot;
