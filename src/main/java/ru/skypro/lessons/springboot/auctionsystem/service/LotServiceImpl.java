@@ -163,7 +163,7 @@ public class LotServiceImpl implements LotService{
                         String.valueOf(lotEntity.getId()),
                         lotEntity.getTitle(),
                         lotEntity.getStatus().name(),
-                        lotEntity.getBids().get(lotEntity.getBids().size()-1).getBidderName(),
+                        lotEntity.getBids().size() > 0 ? lotEntity.getBids().get(lotEntity.getBids().size()-1).getBidderName() : "null",
                         String.valueOf(
                                 lotEntity.getBids().size()*lotEntity.getBidPrice()+lotEntity.getStartPrice()
                         )

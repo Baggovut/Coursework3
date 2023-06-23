@@ -30,7 +30,8 @@ public class LotLoggingAspect {
                 argsString.append(", ");
             }
         }
-        logger.debug("Был вызван метод: "+methodName+" с параметрами: "+ argsString);
+
+        logger.debug("Был вызван метод: "+methodName+(argsString.isEmpty() ? " без параметров" :" с параметрами: "+ argsString));
     }
     @AfterThrowing(value = "lotLogging()",throwing = "exception")
     public void logAfterThrowing(JoinPoint jp, Exception exception){
