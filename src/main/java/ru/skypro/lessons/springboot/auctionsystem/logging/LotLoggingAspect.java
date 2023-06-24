@@ -15,7 +15,6 @@ public class LotLoggingAspect {
     @Pointcut("within(ru.skypro.lessons.springboot.auctionsystem.service.*)")
     public void lotLogging(){
     }
-
     @After("lotLogging()")
     public void logAfterMethod(JoinPoint jp){
         Logger logger = LoggerFactory.getLogger(jp.getTarget().getClass());
