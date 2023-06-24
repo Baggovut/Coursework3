@@ -31,6 +31,7 @@ import java.io.*;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -163,7 +164,7 @@ public class LotServiceImpl implements LotService{
                         String.valueOf(lotEntity.getId()),
                         lotEntity.getTitle(),
                         lotEntity.getStatus().name(),
-                        lotEntity.getBids().size() > 0 ? lotEntity.getBids().get(lotEntity.getBids().size()-1).getBidderName() : "null",
+                        lotEntity.getBids().stream().max(Comparator.comparing(BidEntity::getBidDate)).orElse(new BidEntity()).getBidderName(),
                         String.valueOf(
                                 lotEntity.getBids().size()*lotEntity.getBidPrice()+lotEntity.getStartPrice()
                         )

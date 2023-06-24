@@ -4,8 +4,11 @@ import org.springframework.stereotype.Component;
 import ru.skypro.lessons.springboot.auctionsystem.dto.CreateLot;
 import ru.skypro.lessons.springboot.auctionsystem.dto.FullLot;
 import ru.skypro.lessons.springboot.auctionsystem.dto.Lot;
+import ru.skypro.lessons.springboot.auctionsystem.entity.BidEntity;
 import ru.skypro.lessons.springboot.auctionsystem.entity.LotEntity;
 import ru.skypro.lessons.springboot.auctionsystem.entity.enums.Status;
+
+import java.util.Comparator;
 
 @Component
 public class LotMapper {
@@ -58,7 +61,7 @@ public class LotMapper {
         );
         //fullLot.setLastBid(null);
         fullLot.setLastBid(
-                lotEntity.getBids().size() > 0 ? lotEntity.getBids().get(lotEntity.getBids().size()-1) : null
+                lotEntity.getBids().stream().max(Comparator.comparing(BidEntity::getBidDate)).orElse(null)
         );
 
         return fullLot;
