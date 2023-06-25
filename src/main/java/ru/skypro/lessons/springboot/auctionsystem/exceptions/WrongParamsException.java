@@ -1,8 +1,11 @@
 package ru.skypro.lessons.springboot.auctionsystem.exceptions;
 
-public class WrongParamsException extends RuntimeException{
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
+public class WrongParamsException extends ResponseStatusException {
 
     public WrongParamsException(String message) {
-        super(message);
+        super(HttpStatus.BAD_REQUEST,message);
     }
 }

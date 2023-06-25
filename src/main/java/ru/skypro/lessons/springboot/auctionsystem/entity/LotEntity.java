@@ -2,6 +2,8 @@ package ru.skypro.lessons.springboot.auctionsystem.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import ru.skypro.lessons.springboot.auctionsystem.entity.enums.Status;
 
 import java.util.List;
@@ -28,5 +30,6 @@ public class LotEntity {
 
     @OneToMany
     @JoinColumn(name = "lot_id",referencedColumnName = "id")
+    @Fetch(FetchMode.SUBSELECT)
     private List<BidEntity> bids;
 }

@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class LotExceptionHandler {
     @ExceptionHandler
     public ResponseEntity<?> handleIdNotFoundException(IdNotFoundException idNotFoundException){
-        return new ResponseEntity<>(idNotFoundException.getMessage(),HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(idNotFoundException.getBody(),HttpStatus.NOT_FOUND);
     }
     @ExceptionHandler
     public ResponseEntity<?> handleWrongParamsException(WrongParamsException wrongParamsException){
-        return new ResponseEntity<>(wrongParamsException.getMessage(),HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(wrongParamsException.getBody(),HttpStatus.BAD_REQUEST);
     }
 }

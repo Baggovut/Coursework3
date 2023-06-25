@@ -66,12 +66,6 @@ public class LotServiceImpl implements LotService{
                 .orElseThrow(
                         () -> new IdNotFoundException("Лот с id="+id+" не найден.")
                 );
-        //BidEntity lastBid = bidRepository.findFirstByLotIdIsOrderByBidDateDesc(id).orElse(null);
-        //fullLot.setLastBid(lastBid);
-
-        //Integer currentPrice = bidRepository.countByLotId(id) * fullLot.getBidPrice() + fullLot.getStartPrice();
-        //fullLot.setCurrentPrice(currentPrice);
-
         return fullLot;
     }
 
