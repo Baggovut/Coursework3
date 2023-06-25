@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="create_table_bid" author="dev">
+        <preConditions>
+            <not>
+                <tableExists tableName="bid"/>
+            </not>
+        </preConditions>
+        <createTable tableName="bid">
+            <column name="bidder_name" type="varchar(20)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="bid_pkey"/>
+            </column>
+            <column name="bid_date" type="timestamptz">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="bid_pkey"/>
+            </column>
+            <column name="lot_id" type="int">
+                <constraints nullable="false"
+                             foreignKeyName="fk_bid_lot_id"
+                             referencedTableName="lot"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="bid"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
